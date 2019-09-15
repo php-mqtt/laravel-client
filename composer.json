@@ -33,7 +33,10 @@
     "laravel": {
       "providers": [
         "PhpMqtt\\Client\\MqttClientServiceProvider"
-      ]
+      ],
+      "aliases": {
+        "MQTT": "PhpMqtt\\Client\\Facades\\MQTT"
+      }
     }
   }
 }

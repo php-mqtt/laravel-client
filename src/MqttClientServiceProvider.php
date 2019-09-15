@@ -2,6 +2,7 @@
 
 namespace PhpMqtt\Client;
 
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 
 /**
@@ -12,40 +13,14 @@ use Illuminate\Support\ServiceProvider;
 class MqttClientServiceProvider extends ServiceProvider
 {
     /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = false;
-
-    /**
-     * Bootstrap the application events.
-     *
-     * @return void
-     */
-    public function boot(): void
-    {
-        $this->handleConfigs();
-    }
-
-    /**
      * Register the service provider.
      *
      * @return void
      */
     public function register(): void
     {
-        // Bind any implementations.
-    }
-
-    /**
-     * Get the services provided by the provider.
-     *
-     * @return array
-     */
-    public function provides(): array
-    {
-        return [];
+        $this->registerConfig();
+        $this->registerServices();
     }
 
     /**
@@ -53,12 +28,27 @@ class MqttClientServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function handleConfigs(): void
+    protected function registerConfig(): void
     {
         $configPath = __DIR__ . '/../config/mqtt-client.php';
 
-        $this->publishes([$configPath => config_path('mqtt-client.php')], 'config');
+        if ($this->app->runningInConsole()) {
+            $this->publishes([$configPath => config_path('mqtt-client.php')], 'config');
+        }
 
         $this->mergeConfigFrom($configPath, 'mqtt-client');
+    }
+
+    /**
+     * Registers the services offered by this package.
+     *
+     * @return void
+     */
+    protected function registerServices(): void
+    {
+        $this->app->bind(ConnectionManager::class, function (Application $app) {
+            $config = $app->make('config')->get('mqtt-client', []);
+            return new ConnectionManager($app, $config);
+        });
     }
 }
