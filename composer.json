@@ -1,0 +1,39 @@
+{
+  "name": "php-mqtt/laravel-client",
+  "description": "An MQTT client library for Laravel.",
+  "type": "library",
+  "keywords": [
+    "mqtt",
+    "client",
+    "publish",
+    "subscribe",
+    "laravel"
+  ],
+  "homepage": "https://github.com/php-mqtt/laravel-client",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Namoshek",
+      "email": "namoshek@gmx.at",
+      "role": "developer"
+    }
+  ],
+  "require": {
+    "php": "^7.2",
+    "illuminate/config": "~5.8",
+    "illuminate/support": "~5.8",
+    "php-mqtt/client": "0.1.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "PhpMqtt\\Client\\": "src"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "PhpMqtt\\Client\\MqttClientServiceProvider"
+      ]
+    }
+  }
+}
