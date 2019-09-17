@@ -4,6 +4,8 @@ namespace PhpMqtt\Client;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
+use PhpMqtt\Client\Contracts\Repository;
+use PhpMqtt\Client\Repositories\MemoryRepository;
 
 /**
  * Registers the php-mqtt/laravel-client within the application.
@@ -50,5 +52,7 @@ class MqttClientServiceProvider extends ServiceProvider
             $config = $app->make('config')->get('mqtt-client', []);
             return new ConnectionManager($app, $config);
         });
+
+        $this->app->bind(Repository::class, MemoryRepository::class);
     }
 }
