@@ -126,13 +126,13 @@ class ConnectionManager
             throw new ConnectionNotAvailableException($name);
         }
 
-        $host           = Arr::get($config, 'host');
-        $port           = Arr::get($config, 'port', 1883);
+        $host           = (string) Arr::get($config, 'host');
+        $port           = (int) Arr::get($config, 'port', 1883);
         $clientId       = Arr::get($config, 'client_id');
-        $protocol       = Arr::get($config, 'protocol', MqttClient::MQTT_3_1);
-        $cleanSession   = Arr::get($config, 'use_clean_session', true);
+        $protocol       = (string) Arr::get($config, 'protocol', MqttClient::MQTT_3_1);
+        $cleanSession   = (bool) Arr::get($config, 'use_clean_session', true);
         $repository     = Arr::get($config, 'repository', Repository::class);
-        $loggingEnabled = Arr::get($config, 'enable_logging', true);
+        $loggingEnabled = (bool) Arr::get($config, 'enable_logging', true);
 
         $settings   = $this->buildConnectionSettings(Arr::get($config, 'connection_settings', []));
         $repository = $this->application->make($repository);
@@ -153,16 +153,16 @@ class ConnectionManager
     protected function buildConnectionSettings(array $config): ConnectionSettings
     {
         return (new ConnectionSettings)
-            ->setConnectTimeout(Arr::get($config, 'connect_timeout', 60))
-            ->setSocketTimeout(Arr::get($config, 'socket_timeout', 5))
-            ->setResendTimeout(Arr::get($config, 'resend_timeout', 10))
-            ->setKeepAliveInterval(Arr::get($config, 'keep_alive_interval', 10))
+            ->setConnectTimeout((int) Arr::get($config, 'connect_timeout', 60))
+            ->setSocketTimeout((int) Arr::get($config, 'socket_timeout', 5))
+            ->setResendTimeout((int) Arr::get($config, 'resend_timeout', 10))
+            ->setKeepAliveInterval((int) Arr::get($config, 'keep_alive_interval', 10))
             ->setUsername(Arr::get($config, 'auth.username'))
             ->setPassword(Arr::get($config, 'auth.password'))
-            ->setUseTls(Arr::get($config, 'tls.enabled', false))
-            ->setTlsSelfSignedAllowed(Arr::get($config, 'tls.allow_self_signed_certificate', false))
-            ->setTlsVerifyPeer(Arr::get($config, 'tls.verify_peer', true))
-            ->setTlsVerifyPeerName(Arr::get($config, 'tls.verify_peer_name', true))
+            ->setUseTls((bool) Arr::get($config, 'tls.enabled', false))
+            ->setTlsSelfSignedAllowed((bool) Arr::get($config, 'tls.allow_self_signed_certificate', false))
+            ->setTlsVerifyPeer((bool) Arr::get($config, 'tls.verify_peer', true))
+            ->setTlsVerifyPeerName((bool) Arr::get($config, 'tls.verify_peer_name', true))
             ->setTlsCertificateAuthorityFile(Arr::get($config, 'tls.ca_file'))
             ->setTlsCertificateAuthorityPath(Arr::get($config, 'tls.ca_path'))
             ->setTlsClientCertificateFile(Arr::get($config, 'tls.client_certificate_file'))
@@ -170,7 +170,7 @@ class ConnectionManager
             ->setTlsClientCertificateKeyPassphrase(Arr::get($config, 'tls.client_certificate_key_passphrase'))
             ->setLastWillTopic(Arr::get($config, 'last_will.topic'))
             ->setLastWillMessage(Arr::get($config, 'last_will.message'))
-            ->setLastWillQualityOfService(Arr::get($config, 'last_will.quality_of_service', MqttClient::QOS_AT_MOST_ONCE))
-            ->setRetainLastWill(Arr::get($config, 'last_will.retain', false));
+            ->setLastWillQualityOfService((int) Arr::get($config, 'last_will.quality_of_service', MqttClient::QOS_AT_MOST_ONCE))
+            ->setRetainLastWill((bool) Arr::get($config, 'last_will.retain', false));
     }
 }
