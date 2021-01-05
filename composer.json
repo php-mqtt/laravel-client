@@ -24,6 +24,9 @@
     "illuminate/support": "~7.0|~8.0",
     "php-mqtt/client": "v1.0.0-rc1"
   },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3.5"
+  },
   "autoload": {
     "psr-4": {
       "PhpMqtt\\Client\\": "src"
@@ -38,5 +41,12 @@
         "MQTT": "PhpMqtt\\Client\\Facades\\MQTT"
       }
     }
+  },
+  "scripts": {
+    "fix:cs": "vendor/bin/phpcbf",
+    "test": [
+      "@test:cs"
+    ],
+    "test:cs": "vendor/bin/phpcs"
   }
 }

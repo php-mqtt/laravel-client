@@ -13,8 +13,8 @@ use PhpMqtt\Client\Contracts\MqttClient;
  * @method static void disconnect(string $connection = null)
  * @method static void publish(string $topic, string $message, bool $retain = false, string $connection = null)
  *
- * @see ConnectionManager
  * @package PhpMqtt\Client\Facades
+ * @see ConnectionManager
  */
 class MQTT extends Facade
 {
