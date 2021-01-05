@@ -21,24 +21,26 @@ class MqttClientServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->registerConfig();
+        $this->mergeConfigFrom(__DIR__ . '/../config/mqtt-client.php', 'mqtt-client');
+
         $this->registerServices();
     }
 
     /**
-     * Publishes and merges the configuration of the package.
+     * Bootstrap any application services.
      *
      * @return void
+     * @throws \BadFunctionCallException
      */
-    protected function registerConfig(): void
+    public function boot(): void
     {
-        $configPath = __DIR__ . '/../config/mqtt-client.php';
-
-        if ($this->app->runningInConsole()) {
-            $this->publishes([$configPath => config_path('mqtt-client.php')], 'config');
+        if (!function_exists('config_path')) {
+            throw new \BadFunctionCallException('config_path() function not found. Is the Laravel framework installed?');
         }
 
-        $this->mergeConfigFrom($configPath, 'mqtt-client');
+        if ($this->app->runningInConsole()) {
+            $this->publishes([__DIR__ . '/../config/mqtt-client.php' => config_path('mqtt-client.php')], 'config');
+        }
     }
 
     /**
@@ -50,6 +52,7 @@ class MqttClientServiceProvider extends ServiceProvider
     {
         $this->app->bind(ConnectionManager::class, function (Application $app) {
             $config = $app->make('config')->get('mqtt-client', []);
+
             return new ConnectionManager($app, $config);
         });
 

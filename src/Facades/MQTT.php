@@ -6,12 +6,12 @@ namespace PhpMqtt\Client\Facades;
 
 use Illuminate\Support\Facades\Facade;
 use PhpMqtt\Client\ConnectionManager;
-use PhpMqtt\Client\MQTTClient;
+use PhpMqtt\Client\Contracts\MqttClient;
 
 /**
- * @method static MQTTClient connection(string $name = null)
- * @method static void close(string $connection = null)
- * @method static void publish(string $topic, string $message, string $connection = null)
+ * @method static MqttClient connection(string $name = null)
+ * @method static void disconnect(string $connection = null)
+ * @method static void publish(string $topic, string $message, bool $retain = false, string $connection = null)
  *
  * @see ConnectionManager
  * @package PhpMqtt\Client\Facades
