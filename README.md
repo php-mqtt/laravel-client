@@ -2,6 +2,12 @@
 
 [![Latest Stable Version](https://poser.pugx.org/php-mqtt/laravel-client/v)](https://packagist.org/packages/php-mqtt/laravel-client)
 [![Total Downloads](https://poser.pugx.org/php-mqtt/laravel-client/downloads)](https://packagist.org/packages/php-mqtt/laravel-client)
+[![Tests](https://github.com/php-mqtt/laravel-client/workflows/Tests/badge.svg)](https://github.com/php-mqtt/laravel-client/actions?query=workflow%3ATests)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=php-mqtt_laravel-client&metric=alert_status)](https://sonarcloud.io/dashboard?id=php-mqtt_laravel-client)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=php-mqtt_laravel-client&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=php-mqtt_laravel-client)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=php-mqtt_laravel-client&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=php-mqtt_laravel-client)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=php-mqtt_laravel-client&metric=security_rating)](https://sonarcloud.io/dashboard?id=php-mqtt_laravel-client)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=php-mqtt_laravel-client&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=php-mqtt_laravel-client)
 [![License](https://poser.pugx.org/php-mqtt/laravel-client/license)](https://packagist.org/packages/php-mqtt/laravel-client)
 
 `php-mqtt/laravel-client` was created by, and is maintained by [Marvin Mall](https://github.com/namoshek).
