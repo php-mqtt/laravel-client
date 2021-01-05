@@ -9,7 +9,7 @@ namespace PhpMqtt\Client\Exceptions;
  *
  * @package PhpMqtt\Client\Exceptions
  */
-class ConnectionNotAvailableException extends MQTTClientException
+class ConnectionNotAvailableException extends MqttClientException
 {
     public function __construct(string $name)
     {
