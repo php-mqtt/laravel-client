@@ -6,7 +6,7 @@ namespace PhpMqtt\Client\Facades;
 
 use Illuminate\Support\Facades\Facade;
 use PhpMqtt\Client\ConnectionManager;
-use PhpMqtt\Client\MqttClient;
+use PhpMqtt\Client\Contracts\MqttClient;
 
 /**
  * @method static MqttClient connection(string $name = null)

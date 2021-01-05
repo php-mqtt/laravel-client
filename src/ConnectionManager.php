@@ -7,6 +7,7 @@ namespace PhpMqtt\Client;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Arr;
+use PhpMqtt\Client\Contracts\MqttClient as MqttClientContract;
 use PhpMqtt\Client\Contracts\Repository;
 use PhpMqtt\Client\Exceptions\ConfigurationInvalidException;
 use PhpMqtt\Client\Exceptions\ConnectingToBrokerFailedException;
@@ -26,7 +27,7 @@ class ConnectionManager
     private array $config;
     private string $defaultConnection;
 
-    /** @var MqttClient[] */
+    /** @var MqttClientContract[] */
     private array $connections = [];
 
     /**
@@ -46,14 +47,14 @@ class ConnectionManager
      * Gets the connection with the specified name.
      *
      * @param string|null $name
-     * @return MqttClient
+     * @return MqttClientContract
      * @throws BindingResolutionException
      * @throws ConfigurationInvalidException
      * @throws ConnectingToBrokerFailedException
      * @throws ConnectionNotAvailableException
      * @throws ProtocolNotSupportedException
      */
-    public function connection(string $name = null): MqttClient
+    public function connection(string $name = null): MqttClientContract
     {
         if ($name === null) {
             $name = $this->defaultConnection;
@@ -110,14 +111,14 @@ class ConnectionManager
      * Creates a new MQTT client and connects to the specified server.
      *
      * @param string $name
-     * @return MqttClient
+     * @return MqttClientContract
      * @throws BindingResolutionException
      * @throws ConfigurationInvalidException
      * @throws ConnectingToBrokerFailedException
      * @throws ConnectionNotAvailableException
      * @throws ProtocolNotSupportedException
      */
-    protected function createConnection(string $name): MqttClient
+    protected function createConnection(string $name): MqttClientContract
     {
         $config = Arr::get($this->config, "connections.{$name}");
 
