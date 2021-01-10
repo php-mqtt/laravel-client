@@ -22,7 +22,7 @@
     "php": "^7.4|^8.0",
     "illuminate/config": "~7.0|~8.0",
     "illuminate/support": "~7.0|~8.0",
-    "php-mqtt/client": "v1.0.0-rc1"
+    "php-mqtt/client": "^1.0"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.5"
