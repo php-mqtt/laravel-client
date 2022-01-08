@@ -60,6 +60,12 @@ class ConnectionManager
             $name = $this->defaultConnection;
         }
 
+        // Remove the connection if it is in a disconnected state.
+        // Doing this instead of simply reconnecting ensures the caller will get a fresh connection.
+        if (array_key_exists($name, $this->connections) && !$this->connections[$name]->isConnected()) {
+            unset($this->connections[$name]);
+        }
+
         if (!array_key_exists($name, $this->connections)) {
             $this->connections[$name] = $this->createConnection($name);
         }
