@@ -15,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        php-version: ['7.4', '8.0']
+        php-version: ['7.4', '8.0', '8.1']
 
     steps:
       - uses: actions/checkout@v2
@@ -55,7 +55,7 @@ jobs:
 
       - name: Run SonarQube analysis
         uses: sonarsource/sonarcloud-github-action@master
-        if: matrix.php-version == '8.0'
+        if: matrix.php-version == '8.1'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
