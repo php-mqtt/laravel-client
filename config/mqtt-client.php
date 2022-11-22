@@ -49,7 +49,7 @@ return [
             // A clean session will let the broker forget about subscriptions and
             // queued messages when the client disconnects. Also, if available,
             // data of a previous session will be deleted when connecting.
-            'use_clean_session' => env('MQTT_CLEAN_SESSION', true),
+            'use_clean_session' => env('MQTT_CLEAN_SESSION', false),
 
             // Whether logging shall be enabled. The default logger will be used
             // with the log level as configured.
