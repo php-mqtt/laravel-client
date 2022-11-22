@@ -178,6 +178,8 @@ class ConnectionManager
             ->setLastWillMessage(Arr::get($config, 'last_will.message'))
             ->setLastWillQualityOfService((int) Arr::get($config, 'last_will.quality_of_service', MqttClient::QOS_AT_MOST_ONCE))
             ->setRetainLastWill((bool) Arr::get($config, 'last_will.retain', false))
-            ->setReconnectAutomatically((bool) Arr::get($config, 'reconnect_automatically', false));
+            ->setReconnectAutomatically((bool) Arr::get($config, 'auto_reconnect.enabled', false))
+            ->setMaxReconnectAttempts((int) Arr::get($config, 'auto_reconnect.max_reconnect_attempts', 3))
+            ->setDelayBetweenReconnectAttempts((int) Arr::get($config, 'auto_reconnect.delay_between_reconnect_attempts', 0));
     }
 }
