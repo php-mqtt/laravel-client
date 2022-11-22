@@ -102,7 +102,7 @@ return [
                 // if no other message has been sent.
                 'keep_alive_interval' => env('MQTT_KEEP_ALIVE_INTERVAL', 10),
 
-                'reconnect_automatically' => env('MQTT_RECONNECT_AUTOMATICALLY', true),
+                'reconnect_automatically' => env('MQTT_RECONNECT_AUTOMATICALLY', false),
             ],
 
         ],
