@@ -101,6 +101,8 @@ return [
                 // The interval (in seconds) in which the client will send a ping to the broker,
                 // if no other message has been sent.
                 'keep_alive_interval' => env('MQTT_KEEP_ALIVE_INTERVAL', 10),
+                
+                'reconnect_automatically' => env('MQTT_KEEP_RECONNECT_AUTOMATICALLY', true),
             ],
 
         ],
