@@ -55,7 +55,8 @@ return [
             // with the log level as configured.
             'enable_logging' => env('MQTT_ENABLE_LOGGING', true),
 
-            // Which logging channel to use or to broadcast to all available
+            // Which logging channel to use for logs produced by the MQTT client.
+            // If left empty, the default log channel or stack is being used.
             'log_channel' => env('MQTT_LOG_CHANNEL', null),
 
             // Defines which repository implementation shall be used. Currently,
