@@ -144,8 +144,8 @@ class ConnectionManager
         $settings   = $this->buildConnectionSettings(Arr::get($config, 'connection_settings', []));
         $repository = $this->application->make($repository);
         $logger     = $loggingEnabled ? $this->application->make('log') : null;
-			
-        if($logger && $logChannel) {
+
+        if ($logger && $logChannel) {
             $logger = $logger->channel($logChannel);
         }
 
