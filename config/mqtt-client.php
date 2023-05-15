@@ -55,6 +55,9 @@ return [
             // with the log level as configured.
             'enable_logging' => env('MQTT_ENABLE_LOGGING', true),
 
+            // Which logging channel to use or to broadcast to all available
+            'log_channel' => env('MQTT_LOG_CHANNEL', null),
+
             // Defines which repository implementation shall be used. Currently,
             // only a MemoryRepository is supported.
             'repository' => MemoryRepository::class,

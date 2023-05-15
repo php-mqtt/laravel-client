@@ -139,10 +139,15 @@ class ConnectionManager
         $cleanSession   = (bool) Arr::get($config, 'use_clean_session', true);
         $repository     = Arr::get($config, 'repository', Repository::class);
         $loggingEnabled = (bool) Arr::get($config, 'enable_logging', true);
+        $loggingChannel = (bool) Arr::get($config, 'log_channel', null);
 
         $settings   = $this->buildConnectionSettings(Arr::get($config, 'connection_settings', []));
         $repository = $this->application->make($repository);
         $logger     = $loggingEnabled ? $this->application->make('log') : null;
+			
+        if($logger && null !== $loggingChannel) {
+            $logger = $logger->channel($loggingChannel);
+        }
 
         $client = new MqttClient($host, $port, $clientId, $protocol, $repository, $logger);
         $client->connect($settings, $cleanSession);
