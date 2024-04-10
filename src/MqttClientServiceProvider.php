@@ -2,7 +2,7 @@
 
 namespace PhpMqtt\Client;
 
-use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Container\Container as Application;
 use Illuminate\Support\ServiceProvider;
 use PhpMqtt\Client\Contracts\Repository;
 use PhpMqtt\Client\Repositories\MemoryRepository;

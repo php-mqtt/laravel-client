@@ -25,6 +25,12 @@ composer require php-mqtt/laravel-client
 The package will register itself through Laravel auto discovery of packages.
 Registered will be the service provider as well as an `MQTT` facade.
 
+If you are using Lumen, you need to manually add the following code to `bootstrap/app.php`:
+
+```php
+$app->register(\PhpMqtt\Client\MqttClientServiceProvider::class);
+```
+
 After installing the package, you should publish the configuration file using
 
 ```bash

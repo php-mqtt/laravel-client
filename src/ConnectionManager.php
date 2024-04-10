@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace PhpMqtt\Client;
 
 use Illuminate\Contracts\Container\BindingResolutionException;
-use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Container\Container as Application;
 use Illuminate\Support\Arr;
 use PhpMqtt\Client\Contracts\MqttClient as MqttClientContract;
 use PhpMqtt\Client\Contracts\Repository;
