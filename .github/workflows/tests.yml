@@ -53,7 +53,7 @@ jobs:
         run: composer test
 
       - name: Run SonarQube analysis
-        uses: sonarsource/sonarqube-scan-action@v5.0.0
+        uses: sonarsource/sonarqube-scan-action@v5.1.0
         if: matrix.run-sonarqube-analysis
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
