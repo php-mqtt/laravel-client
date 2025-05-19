@@ -54,7 +54,7 @@ class ConnectionManager
      * @throws ConnectionNotAvailableException
      * @throws ProtocolNotSupportedException
      */
-    public function connection(string $name = null): MqttClientContract
+    public function connection(?string $name = null): MqttClientContract
     {
         if ($name === null) {
             $name = $this->defaultConnection;
@@ -79,7 +79,7 @@ class ConnectionManager
      * @param string|null $connection
      * @throws DataTransferException
      */
-    public function disconnect(string $connection = null): void
+    public function disconnect(?string $connection = null): void
     {
         if ($connection === null) {
             $connection = $this->defaultConnection;
@@ -106,7 +106,7 @@ class ConnectionManager
      * @throws ProtocolNotSupportedException
      * @throws RepositoryException
      */
-    public function publish(string $topic, string $message, bool $retain = false, string $connection = null): void
+    public function publish(string $topic, string $message, bool $retain = false, ?string $connection = null): void
     {
         $client = $this->connection($connection);
 

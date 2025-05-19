@@ -9,9 +9,9 @@ use PhpMqtt\Client\ConnectionManager;
 use PhpMqtt\Client\Contracts\MqttClient;
 
 /**
- * @method static MqttClient connection(string $name = null)
- * @method static void disconnect(string $connection = null)
- * @method static void publish(string $topic, string $message, bool $retain = false, string $connection = null)
+ * @method static MqttClient connection(string|null $name = null)
+ * @method static void disconnect(string|null $connection = null)
+ * @method static void publish(string $topic, string $message, bool $retain = false, string|null $connection = null)
  *
  * @package PhpMqtt\Client\Facades
  * @see ConnectionManager
@@ -21,9 +21,9 @@ class MQTT extends Facade
     /**
      * Get the registered name of the component.
      *
-     * @return string
+     * @return class-string
      */
-    protected static function getFacadeAccessor()
+    protected static function getFacadeAccessor(): string
     {
         return ConnectionManager::class;
     }
