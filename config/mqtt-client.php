@@ -78,6 +78,7 @@ return [
                     'client_certificate_file' => env('MQTT_TLS_CLIENT_CERT_FILE'),
                     'client_certificate_key_file' => env('MQTT_TLS_CLIENT_CERT_KEY_FILE'),
                     'client_certificate_key_passphrase' => env('MQTT_TLS_CLIENT_CERT_KEY_PASSPHRASE'),
+                    'alpn' => env('MQTT_TLS_ALPN'),
                 ],
 
                 // Credentials used for authentication and authorization.

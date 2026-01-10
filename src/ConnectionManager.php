@@ -179,6 +179,7 @@ class ConnectionManager
             ->setTlsClientCertificateFile(Arr::get($config, 'tls.client_certificate_file'))
             ->setTlsClientCertificateKeyFile(Arr::get($config, 'tls.client_certificate_key_file'))
             ->setTlsClientCertificateKeyPassphrase(Arr::get($config, 'tls.client_certificate_key_passphrase'))
+            ->setTlsAlpn(Arr::get($config, 'tls.alpn'))
             ->setLastWillTopic(Arr::get($config, 'last_will.topic'))
             ->setLastWillMessage(Arr::get($config, 'last_will.message'))
             ->setLastWillQualityOfService((int) Arr::get($config, 'last_will.quality_of_service', MqttClient::QOS_AT_MOST_ONCE))
